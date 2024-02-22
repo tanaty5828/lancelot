@@ -1,6 +1,5 @@
 package com.arthur.lancelot.controller;
 
-import com.arthur.lancelot.controller.model.Status;
 import com.arthur.lancelot.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -20,13 +19,6 @@ class TaskController {
 		return "Hello world!";
 	}
 
-
-	@RequestMapping("/debug")
-	Status debug_2() {
-		return Status.builder().health("OK").build();
-	}
-
-
 	@RequestMapping("/hello")
 	String hello(@RequestParam(value = "name", required = false, defaultValue = "John due") String name) {
 		return "Hello " + name + "!";
@@ -39,4 +31,8 @@ class TaskController {
 		return taskService.plus(valueA, valueB).toString();
 	}
 
+	@RequestMapping("consumptionTax")
+	Double calculateConsumptionTax(@RequestParam(value = "prices") String prices) {
+		return taskService.calculateConsumptionTax(prices);
+	}
 }
