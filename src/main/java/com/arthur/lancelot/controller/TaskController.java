@@ -31,4 +31,8 @@ class TaskController {
 		return taskService.plus(valueA, valueB).toString();
 	}
 
+	@RequestMapping("consumptionTax")
+	Double calculateConsumptionTax(@RequestParam(value = "prices") String prices) {
+		return taskService.calculateConsumptionTax(prices);
+	}
 }
